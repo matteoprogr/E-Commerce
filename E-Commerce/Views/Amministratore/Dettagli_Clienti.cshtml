@@ -1,0 +1,37 @@
+﻿@model Clienti
+@{
+    ViewData["Title"] = "Dettagli Cliente";
+   List<Clienti?> listaClienti = ViewData["listaClienti"]! as List<Clienti?>;
+    
+}
+
+<div class="text-center">
+
+    <form method="get" asp-controller="Amministratore">
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Password</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var v in listaClienti)
+                {
+                <tr>
+                <td>@v.Username </td>
+                <td>@v.Password </td>
+                <td>@v.Email </td>
+                <td><input type="checkbox"/> </td>
+                </tr>
+
+                }
+            </tbody>
+        </table>
+
+        
+    </form>
+
+</div>

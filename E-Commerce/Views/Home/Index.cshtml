@@ -1,0 +1,45 @@
+﻿@model Clienti
+
+@{
+    ViewData["Title"] = "Home Page";
+    Clienti? user = ViewData["user"] as Clienti;
+    string? carrello = ViewData["carrello"]?.ToString();
+}
+<div class="text-center">
+    <div class="contenitore larghezza">
+    @if(user != null ){
+        <label>Benvenuto @user.Username !!!</label><br />
+
+            <a href="https://localhost:7268/Ordini/Ordine"><img src="~/lib/img/casa.jpeg" class="imgC" /></a>
+
+            <a href="https://localhost:7268/Ordini/Ordine"> <img src="~/lib/img/cibo_1.jpeg" class="imgC" /></a>
+
+            <br />
+
+            <a href="https://localhost:7268/Ordini/Ordine"><img src="~/lib/img/informatica.jpg" class="imgC " /></a>
+
+            <a href="https://localhost:7268/Ordini/Ordine"><img src="~/lib/img/vestiti.jpeg" class="imgC" /></a>
+    }
+    else
+    {
+        <label>Benvenuto</label>
+            <a href="https://localhost:7268/Ordini/Ordine"><img src="~/lib/img/casa.jpeg" class="imgC" /></a>
+
+            <a href="https://localhost:7268/Ordini/Ordine"> <img src="~/lib/img/cibo_1.jpeg" class="imgC" /></a>
+
+            <br />
+
+            <a href="https://localhost:7268/Ordini/Ordine"><img src="~/lib/img/informatica.jpg" class="imgC " /></a>
+
+            <a href="https://localhost:7268/Ordini/Ordine"><img src="~/lib/img/vestiti.jpeg" class="imgC" /></a>
+    }
+    @if (carrello != null)
+    {
+        <label>@carrello</label>
+    }
+   
+    </div>
+
+</div>
+
+

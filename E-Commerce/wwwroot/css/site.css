@@ -1,0 +1,160 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+   
+    
+  }
+}
+
+.nascondi{
+    display:none;
+}
+
+.larghezza {
+    width:1000px;
+}
+.lreg {
+   width 300px;
+}
+
+/* Stile per il div contenitore */
+.contenitore {
+    
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Stile per le label */
+.container label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Helvetica Neue', sans-serif; /* Esempio di famiglia di caratteri */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Aggiunge un'ombra al testo */
+}
+
+
+    /* Stile per gli input */
+    .container input[type="text"],
+    .container input[type="email"],
+    .container input[type="password"] {
+        width: 40%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* Stile per i pulsanti */
+    .container button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .container button:hover {
+            background-color: #0056b3;
+        }
+
+
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  
+}
+.table-container {
+    width: 100%; /* Puoi regolare la larghezza della tabella a tuo piacimento */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Stile dell'intestazione della tabella */
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Stile delle righe dispari */
+tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Stile delle celle */
+td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Hover delle righe */
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+select {
+    font-size: 18px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    box-shadow: 0 0 0 0.1rem black;
+    margin-bottom:5px;
+}
+
+
+input {
+    border-radius: 5px;
+    margin-bottom:10px;
+
+}
+
+.inputClass{
+    
+    width:50px;
+}
+.my-label{
+    font-weight:bold;
+    color:violet;
+}
+
+.imgC {
+    height: 200px;
+    width: 300px;
+    margin: 20px;
+    border: solid;
+    border-width: 2px; /* Larghezza del bordo */
+    border-color: #ccc; /* Colore del bordo */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Effetto ombreggiato */
+    transition: transform 0.3s ease;
+}
+    .imgC:hover {
+        transform: scale(1.1);
+    }

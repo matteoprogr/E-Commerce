@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - E_Commerce</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    
+</head>
+@{
+    @using Newtonsoft.Json
+    @inject IHttpContextAccessor HttpContextAccessor
+
+    var sessione = HttpContextAccessor.HttpContext!.Session;
+    string? Nome = sessione.GetString("username");
+    string? crl = sessione.GetString("carrello");
+    string? username = "";
+    int? count = 0;
+    Clienti? user = new Clienti();
+    string? admin = "";
+
+    if (Nome != null)
+    {
+      user  = JsonConvert.DeserializeObject<Clienti?>(Nome);
+        username = user?.Username;
+
+    }
+    if(crl != null)
+    {
+        Carrello? carrello = JsonConvert.DeserializeObject<Carrello?>(crl);
+        count = carrello!.prodottoSelezionato?.Count();
+    }
+
+}
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">E_Commerce</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+
+                        @{
+
+                            if (Nome == null)
+                            {
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Cliente" asp-action="Cliente">Registrazione</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Ordini" asp-action="Ordine">Ordine</a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Cliente" asp-action="Login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Carrello" asp-action="Index">
+                                        <img src="~/lib/img/macchina.jpeg" alt="Carrello" style="width:20px; height:auto;">hello
+                                        @count
+                                    </a>
+                                </li>
+                            }
+                            else if (user != null)
+                            {
+                                admin = username;
+
+                                if (admin != "admin")
+                                {
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Cliente" asp-action="Cliente">Registrazione</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Ordini" asp-action="Ordine">Ordine</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Carrello" asp-action="Index">
+                                            <img src="~/lib/img/macchina.jpeg" alt="Carrello" style="width:20px; height:auto;">hello
+                                            @count
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Cliente" asp-action="Dettagli_Cliente">@username Profilo</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Sessione" asp-action="Logout">Logout</a>
+                                    </li>
+                                }
+
+                                else if (admin.Equals("admin"))
+                                {
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Amministratore" asp-action="Dettagli_Clienti">Dettagli_Clienti</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Amministratore" asp-action="Dettagli_Prodotti">Dettaglio_Prodotti</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Sessione" asp-action="Logout">Logout</a>
+                                    </li>
+
+                                }
+                            }
+
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - E_Commerce - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

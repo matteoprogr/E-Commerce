@@ -1,0 +1,19 @@
+﻿@model Clienti
+@{
+    ViewData["Title"] = "Registrati";
+}
+
+<div class="text-center">
+    <div >
+    <form id="FormRegistrazione" method="post" asp-controller="Cliente" asp-action="Save">
+        
+        <input  type="text" placeholder="Username" asp-for=Username/><br />
+        
+        <input type="password" placeholder="Password" asp-for=Password  /><br />
+
+            <input type="text" asp-for=Email placeholder="Email" /><br>
+
+        <input type="submit" value="Registrati">
+    </form>
+    </div>
+</div>

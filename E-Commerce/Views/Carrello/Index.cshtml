@@ -1,0 +1,76 @@
+﻿@model Carrello
+
+@{
+    ViewData["Title"] = "Home Page";
+    Carrello? carrello = ViewData["addCarello"] as Carrello;
+    Ordini ord = new Ordini();
+    string? niente = TempData["niente"]?.ToString();
+
+
+}
+
+
+<div class="text-center">
+    <form id="Pagamento" method="post"  >
+    
+    @if (carrello.prodottoSelezionato.Count != 0)
+            {
+
+    <table>
+        <thead>
+            <tr>
+                <th>Prodotto</th>
+                <th>Prezzo</th>
+                <th>Quantità</th>
+                <th>Rimuovi</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            
+                @foreach (var v in carrello.prodottoSelezionato)
+                {
+                    <tr>
+                    <td>@v.Nome</td>
+                    <td>@v.Prezzo</td>
+                    <td><input class="inputClass" type="number" value="@v.QuantitaSelezionata" name="mQ"/> </td>
+                    <td><input  type="checkbox" value="@v.Nome"  name="rim"/> </td>
+                    </tr>
+                }
+           
+            
+
+        </tbody>
+    </table>
+            <select id="pagamento" name="pagamento">
+                @foreach (var v in @ord.tipiPagamento)
+                {
+
+                    <option value="@v">@v</option>
+                }
+            </select>
+            <select id="spedizione" name="spedizione">
+                @foreach (var v in @ord.tipiSpedizione)
+                {
+
+                    <option value="@v">@v</option>
+                }
+            </select>
+
+            <input type="submit" asp-action="ConfermaOrdine" asp-controller="Ordini" value="Conferma ordine" />
+            <input type="submit" asp-action="Rimuovi" asp-controller="Carrello" value="Elimina dal carrello" /><br>
+            <span>@niente</span>
+    }
+    else
+    {
+        <label>carrello vuoto</label>
+    }
+    
+    
+    </form>
+   
+    
+
+</div>
+
+

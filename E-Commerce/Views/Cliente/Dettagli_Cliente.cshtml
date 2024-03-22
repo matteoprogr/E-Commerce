@@ -1,0 +1,43 @@
+﻿@model Clienti
+@{
+    ViewData["Title"] = "Dettagli Cliente";
+
+}
+
+<div class="text-center">
+
+    <form method="get"  asp-controller="Cliente">
+        
+            <label class="my-label">@Model.Username</label>
+            <label class="my-label">@Model.Password</label>
+            <label class="my-label">@Model.Email</label>
+        
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Pagamaneto</th>
+                    <th>Spedizione</th>
+                    <th>Dettagli Ordine</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var v in Model.OrdiniCliente)
+                {
+                <tr>
+                <td>@v.DataOrdine </td>
+                <td>@v.TipoPagamento </td>
+                <td>@v.TipoSpedizione </td>
+                <td>@v.DettagliOrdini </td>
+                </tr>
+
+                }
+            </tbody>
+        </table>
+
+        
+    </form>
+
+</div>

@@ -1,0 +1,57 @@
+﻿@model Riepilogo
+
+@{
+    ViewData["Title"] = "Riepilogo Ordine";
+    double? tot = 0;
+    foreach(var v in Model.riepilogoList)
+    {
+        if (v.TotaleOrdine > tot)
+            tot = v.TotaleOrdine ;
+    }
+}
+
+<div class="text-center">
+    
+    
+    @if (Model.riepilogoList.Count != 0)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Prodotto</th>
+                    <th>Quantità</th>
+                    <th>Prezzo</th>
+                    <th>Totale</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var v in Model.riepilogoList)
+            {
+                <tr>
+                    <td>@v.Nome</td>
+                    <td>@v.Quantità</td>
+                    <td>@v.Prezzo</td>
+                    <td>@v.TotaleProdotto</td>
+                </tr>
+            }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Totale Ordine</td>
+                    <td> @tot</td>
+                </tr>
+            </tbody>
+        </table>
+
+        
+        <a href="https://localhost:7268/">Torna alla home</a>
+    }
+    else
+    {
+        <label>Niente</label>
+        <a href="https://localhost:7268/">Torna alla home</a>
+    }
+
+</div>
+
+

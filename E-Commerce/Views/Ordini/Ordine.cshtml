@@ -1,0 +1,37 @@
+﻿@model Categorie
+
+@{
+    ViewData["Title"] = "Ordine";
+    SelectList? lista = ViewData["Select"] as SelectList;
+    string? zero = TempData["zero"]?.ToString();
+}
+
+<div class="text-center ">
+<form id="FormOrdine" method="get" asp-controller="Ordini" asp-action="Ordine">
+    <select asp-items="lista" id="idCategoria" >
+            <option >Seleziona</option>
+    </select>
+       
+    <span>@zero</span>
+        <table id="MyTable">
+            <thead>
+                <tr>
+                    <th>Prodotto</th>
+                    <th>Quantità</th>
+                    <th>Prezzo</th>
+                    <th>Sel. Quant.</th>
+                    <th>Acquista</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+            </tbody>
+        </table>
+
+    </form>
+</div>
+<script src="~/js/ordine.js"></script>
+
+
+
+
